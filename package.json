@@ -1,0 +1,26 @@
+{
+  "name": "sass-all-variable-loader",
+  "version": "0.1.0",
+  "description": "Loads sass files and extracts all variable declarations including from the imported sass files.",
+  "main": "index.js",
+  "author": "Vadym Milichev <vadim.milichev@gmail.com>",
+  "peerDependencies": {
+    "node-sass": "^3.8.0 || 4",
+    "sass-extract": "^2.1.0"
+  },
+  "keywords": [
+    "sass",
+    "scss",
+    "variables",
+    "convert",
+    "extract",
+    "import",
+    "json",
+    "webpack",
+    "loader"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  }
+}
