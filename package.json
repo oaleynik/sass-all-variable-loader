@@ -4,6 +4,9 @@
   "description": "Loads sass files and extracts all variable declarations including from the imported sass files.",
   "main": "index.js",
   "author": "Vadym Milichev <vadim.milichev@gmail.com>",
+  "dependencies": {
+    "sass-extract": "^2.1.0"
+  },
   "peerDependencies": {
     "node-sass": "^3.8.0 || 4",
     "sass-extract": "^2.1.0"
