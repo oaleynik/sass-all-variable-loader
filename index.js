@@ -1,13 +1,15 @@
-const path = require('path');
-const fs = require('fs');
-const loaderUtils = require('loader-utils');
-const sassExtract = require('sass-extract');
+'use strict';
 
-const nodeModules = path.resolve(__dirname, '../node_modules');
-const scssExtension = '.scss';
+var path = require('path');
+var fs = require('fs');
+var loaderUtils = require('loader-utils');
+var sassExtract = require('sass-extract');
 
-const importer = (url, prev) => {
-  let file;
+var nodeModules = path.resolve(__dirname, '..');
+var scssExtension = '.scss';
+
+var importer = function importer(url, prev) {
+  var file = void 0;
   if (url.match(/^~/)) {
     file = path.resolve(nodeModules, url.replace(/^[~\/\\]+/, ''));
   } else {
@@ -18,29 +20,26 @@ const importer = (url, prev) => {
     file += scssExtension;
   }
 
-  const candidates = [
-    file,
-    path.resolve(path.dirname(file), `_${path.basename(file)}`),
-  ];
+  var candidates = [file, path.resolve(path.dirname(file), '_' + path.basename(file))];
 
-  file = candidates.find(fn => fs.existsSync(fn));
+  file = candidates.find(function (fn) {
+    return fs.existsSync(fn);
+  });
 
-  return {file};
+  return { file: file };
 };
 
 function getVarValue(variable) {
   switch (variable.type) {
     case 'SassNumber':
-      return `${variable.value}${variable.unit}`;
+      return '' + variable.value + variable.unit;
     case 'SassString':
     case 'SassBoolean':
       return variable.value;
     case 'SassNull':
       return null;
     case 'SassColor':
-      return variable.value.a !== 1
-        ? `rgba(${variable.value.r}, ${variable.value.g}, ${variable.value.b}, ${variable.value.a})`
-        : variable.value.hex;
+      return variable.value.a !== 1 ? 'rgba(' + variable.value.r + ', ' + variable.value.g + ', ' + variable.value.b + ', ' + variable.value.a + ')' : variable.value.hex;
     case 'SassList':
       return variable.value.map(getVarValue).join(variable.separator);
     case 'SassMap':
@@ -50,24 +49,26 @@ function getVarValue(variable) {
   }
 }
 
-const toValues = (vars) =>
-  Object.keys(vars)
-        .reduce((result, k) => {
-          result[k] = getVarValue(vars[k]);
-          return result;
-        }, {});
+function toValues(vars) {
+  return Object.keys(vars).reduce(function (result, k) {
+    result[k] = getVarValue(vars[k]);
+    return result;
+  }, {});
+}
 
-module.exports = function sassVariableInfoLoader(content) {
+function sassAllVariableLoader(content) {
   this.cacheable();
-  const options = Object.assign({}, loaderUtils.getOptions(this));
-  const includePaths = [].concat([this.context], options.includePaths || []);
+  var options = Object.assign({}, loaderUtils.getOptions(this));
+  var includePaths = [].concat([this.context], options.includePaths || []);
 
-  const rendered = sassExtract.renderSync({
+  var rendered = sassExtract.renderSync({
     // data: content,
     file: this.resourcePath,
-    importer,
-    includePaths,
+    importer: importer,
+    includePaths: includePaths
   });
 
-  return `module.exports = ${JSON.stringify(toValues(rendered.vars.global))};`;
-};
+  return 'module.exports = ' + JSON.stringify(toValues(rendered.vars.global)) + ';';
+}
+
+module.exports = sassAllVariableLoader;
