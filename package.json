@@ -1,6 +1,6 @@
 {
   "name": "sass-all-variable-loader",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Loads sass files and extracts all variable declarations including from the imported sass files.",
   "main": "dist/index.js",
   "author": "Vadym Milichev <vadim.milichev@gmail.com>",
