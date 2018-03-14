@@ -3,6 +3,7 @@
   "version": "0.1.4",
   "description": "Loads sass files and extracts all variable declarations including from the imported sass files.",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "author": "Vadym Milichev <vadim.milichev@gmail.com>",
   "scripts": {
     "build": "tsc",
@@ -44,6 +45,11 @@
     "webpack",
     "loader"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milichev/sass-all-variable-loader"
+  },
+  "homepage": "https://github.com/milichev/sass-all-variable-loader",
   "license": "MIT",
   "engines": {
     "node": ">=6"
