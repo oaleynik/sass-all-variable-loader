@@ -18,7 +18,7 @@
   },
   "peerDependencies": {
     "camelcase": "^4.0.0",
-    "node-sass": "^3.8.0 || 4",
+    "sass": "^1.32.8",
     "sass-extract": "^2.1.0"
   },
   "devDependencies": {
