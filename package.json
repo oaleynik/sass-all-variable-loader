@@ -13,13 +13,13 @@
   "dependencies": {
     "camelcase": "^4.0.0",
     "loader-utils": "^1.0.0",
-    "sass-extract": "^2.1.0",
+    "sass-extract": "git+ssh://git@github.com:oaleynik/sass-extract.git",
     "chalk": "^2.0.0"
   },
   "peerDependencies": {
     "camelcase": "^4.0.0",
     "sass": "^1.32.8",
-    "sass-extract": "^2.1.0"
+    "sass-extract": "git+ssh://git@github.com:oaleynik/sass-extract.git"
   },
   "devDependencies": {
     "@types/camelcase": "^4.1.0",
