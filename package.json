@@ -1,5 +1,5 @@
 {
-  "name": "sass-all-variable-loader",
+  "name": "@oaleynik/sass-all-variable-loader",
   "version": "0.1.5",
   "description": "Loads sass files and extracts all variable declarations including from the imported sass files.",
   "main": "dist/index.js",
@@ -9,17 +9,19 @@
     "build": "tsc",
     "patch-release": "npm version patch && npm publish && git push --follow-tags"
   },
-  "bin": "bin/sass-vars.js",
+  "bin": {
+    "sass-all-variable-loader": "bin/sass-vars.js"
+  },
   "dependencies": {
+    "@oaleynik/sass-extract": "^2.1.0",
     "camelcase": "^4.0.0",
-    "loader-utils": "^1.0.0",
-    "sass-extract": "git+ssh://git@github.com:oaleynik/sass-extract.git",
-    "chalk": "^2.0.0"
+    "chalk": "^2.0.0",
+    "loader-utils": "^1.0.0"
   },
   "peerDependencies": {
     "camelcase": "^4.0.0",
     "sass": "^1.32.8",
-    "sass-extract": "git+ssh://git@github.com:oaleynik/sass-extract.git"
+    "@oaleynik/sass-extract": "^2.1.0"
   },
   "devDependencies": {
     "@types/camelcase": "^4.1.0",
@@ -46,11 +48,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/milichev/sass-all-variable-loader"
+    "url": "git+https://github.com/milichev/sass-all-variable-loader.git"
   },
   "homepage": "https://github.com/milichev/sass-all-variable-loader",
   "license": "MIT",
   "engines": {
     "node": ">=6"
+  },
+  "bugs": {
+    "url": "https://github.com/milichev/sass-all-variable-loader/issues"
   }
 }
