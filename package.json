@@ -27,7 +27,7 @@
     "@types/lodash": "^4.14.104",
     "@types/webpack": "^4.1.0",
     "lodash": "^4.17.5",
-    "node-sass": "^4.7.2",
+    "sass": "^1.32.8",
     "typescript": "^2.7.2"
   },
   "resolutions": {
